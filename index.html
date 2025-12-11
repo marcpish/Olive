@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>In Loving Memory • Olive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <!-- HERO -->
+    <header class="card hero">
+      <div class="hero-text">
+        <div class="subtitle">In Loving Memory Of</div>
+        <h1>Olive</h1>
+        <p class="hero-line">Forever loved. Never forgotten.</p>
+      </div>
+      <div class="hero-photo-wrapper">
+        <!-- Replace hero.jpg with your favorite portrait -->
+        <img src="Images/hero.JPG" alt="[Dog's Name]" class="hero-photo" />
+      </div>
+    </header>
+
+    <!-- PHOTOS -->
+    <section class="card" id="gallery">
+      <h2 class="section-title">Photos</h2>
+      <p class="section-subtitle">A few funny and cute moments.</p>
+
+      <div class="gallery-grid">
+        <!-- Replace src with your real filenames, add/remove blocks as needed -->
+        <div class="gallery-item" data-caption="">
+          <img src="Images/photo1.JPG" alt="[Dog's Name] photo 1" />
+        </div>
+        <div class="gallery-item" data-caption="">
+          <img src="Images/photo2.JPG" alt="[Dog's Name] photo 2" />
+        </div>
+        <div class="gallery-item" data-caption="">
+          <img src="Images/photo3.JPG" alt="[Dog's Name] photo 3" />
+        </div>
+        <div class="gallery-item" data-caption="">
+          <img src="Images/photo4.JPG" alt="[Dog's Name] photo 4" />
+        </div>
+        <div class="gallery-item" data-caption="">
+          <img src="Images/photo5.JPG" alt="[Dog's Name] photo 5" />
+        </div>
+        <div class="gallery-item" data-caption="">
+          <img src="Images/photo6.JPG" alt="[Dog's Name] photo 6" />
+        </div>
+      </div>
+    </section>
+
+    <!-- OPTIONAL VIDEOS -->
+    <section class="card" id="videos">
+      <h2 class="section-title">Videos</h2>
+      <p class="section-subtitle">To see Olives... uniqueness</p>
+
+      <div class="video-grid">
+        <div class="video-card">
+          <video controls>
+            <source src="Images/video1.MOV" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div class="video-card">
+          <video controls>
+            <source src="Images/video2.MOV" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      For Olive!
+    </footer>
+  </main>
+
+  <!-- Lightbox for full-size photos -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose">Close</button>
+      <img src="" alt="" id="lightboxImg" />
+    </div>
+  </div>
+
+  <script>
+    // Simple lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    document.querySelectorAll(".gallery-item img").forEach((img) => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add("open");
+      });
+    });
+
+    lightboxClose.addEventListener("click", () => {
+      lightbox.classList.remove("open");
+      lightboxImg.src = "";
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove("open");
+        lightboxImg.src = "";
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox.classList.contains("open")) {
+        lightbox.classList.remove("open");
+        lightboxImg.src = "";
+      }
+    });
+  </script>
+</body>
+</html>
